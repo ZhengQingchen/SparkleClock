@@ -17,8 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKj-o0-BTR" customClass="FBShimmeringView">
+                                <rect key="frame" x="367" y="548" width="206" height="52"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3月16日 星期一" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gE-au-XEh">
+                                        <rect key="frame" x="-1" y="13.5" width="190" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="0gE-au-XEh" secondAttribute="bottom" constant="12" id="BJB-H9-w86"/>
+                                    <constraint firstAttribute="trailing" secondItem="0gE-au-XEh" secondAttribute="trailing" constant="17" id="a96-OO-1dz"/>
+                                    <constraint firstItem="0gE-au-XEh" firstAttribute="leading" secondItem="aKj-o0-BTR" secondAttribute="leading" constant="-1" id="dJy-wQ-K2v"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAi-1F-b3C" customClass="FBShimmeringView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
+                                <rect key="frame" x="0.0" y="25" width="600" height="550"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10:00:01 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqk-II-y4F">
                                         <rect key="frame" x="8" y="147" width="584" height="255"/>
@@ -27,46 +44,32 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKj-o0-BTR" customClass="FBShimmeringView">
-                                <rect key="frame" x="0.0" y="548" width="600" height="52"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3月16日 星期一" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gE-au-XEh">
-                                        <rect key="frame" x="8" y="8" width="584" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="0gE-au-XEh" secondAttribute="bottom" constant="15" id="BJB-H9-w86"/>
-                                    <constraint firstAttribute="trailing" secondItem="0gE-au-XEh" secondAttribute="trailing" constant="8" id="a96-OO-1dz"/>
-                                    <constraint firstItem="0gE-au-XEh" firstAttribute="leading" secondItem="aKj-o0-BTR" secondAttribute="leading" constant="8" id="dJy-wQ-K2v"/>
-                                </constraints>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="rAi-1F-b3C" secondAttribute="trailing" constant="-16" id="Uyj-Dg-t50"/>
-                            <constraint firstItem="rAi-1F-b3C" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="XPa-AO-zqa"/>
+                            <constraint firstItem="rAi-1F-b3C" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="25" id="XPa-AO-zqa"/>
                             <constraint firstAttribute="bottom" secondItem="aKj-o0-BTR" secondAttribute="bottom" id="Z1O-pe-9oi"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rAi-1F-b3C" secondAttribute="bottom" constant="50" id="cvy-uS-aDq"/>
-                            <constraint firstAttribute="trailing" secondItem="aKj-o0-BTR" secondAttribute="trailing" id="e6y-Zm-Yxu"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rAi-1F-b3C" secondAttribute="bottom" constant="25" id="cvy-uS-aDq"/>
+                            <constraint firstAttribute="trailing" secondItem="aKj-o0-BTR" secondAttribute="trailing" constant="27" id="e6y-Zm-Yxu"/>
                             <constraint firstItem="rAi-1F-b3C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="ewu-3X-L5O"/>
-                            <constraint firstItem="aKj-o0-BTR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jaX-DT-ezc"/>
-                            <constraint firstItem="aKj-o0-BTR" firstAttribute="top" secondItem="rAi-1F-b3C" secondAttribute="bottom" constant="-2" id="nvp-Dl-8G7"/>
+                            <constraint firstItem="aKj-o0-BTR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="367" id="jaX-DT-ezc"/>
+                            <constraint firstItem="aKj-o0-BTR" firstAttribute="top" secondItem="rAi-1F-b3C" secondAttribute="bottom" constant="-27" id="nvp-Dl-8G7"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="1rF-xR-kYQ" appends="YES" id="gfe-1G-b9J"/>
                             <outletCollection property="gestureRecognizers" destination="yLW-Sr-Kc4" appends="YES" id="T7Z-v3-DSh"/>
                             <outletCollection property="gestureRecognizers" destination="Upw-yu-0ka" appends="YES" id="LRE-60-lhd"/>
+                            <outletCollection property="gestureRecognizers" destination="yYF-Kg-vco" appends="YES" id="mqx-bz-DGd"/>
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="backView" destination="8bC-Xf-vdC" id="yWP-gb-Cbc"/>
                         <outlet property="clockLabel" destination="pqk-II-y4F" id="Hd0-se-k9a"/>
                         <outlet property="dateLable" destination="0gE-au-XEh" id="iSX-bg-b57"/>
+                        <outlet property="doubleTapGestureRecognizer" destination="yYF-Kg-vco" id="I1k-P6-STy"/>
                         <outlet property="shimmeringView" destination="rAi-1F-b3C" id="nfU-mt-1jv"/>
                         <outlet property="shimmeringViewDate" destination="aKj-o0-BTR" id="ecr-4Y-EYV"/>
                         <outlet property="tapGestureRecognizer" destination="1rF-xR-kYQ" id="DyY-NX-CxF"/>
@@ -88,6 +91,11 @@
                         <action selector="swipeGesture:" destination="BYZ-38-t0r" id="pN6-an-jH0"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="yYF-Kg-vco">
+                    <connections>
+                        <action selector="doubleTapGesture:" destination="BYZ-38-t0r" id="1F1-rk-eZ4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="305" y="527"/>
         </scene>

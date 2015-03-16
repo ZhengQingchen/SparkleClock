@@ -14,10 +14,12 @@ class ViewController: UIViewController {
   var dateFormatter: NSDateFormatter!
     var dateFormatter2: NSDateFormatter!
     
+    @IBOutlet var backView: UIView!
   @IBOutlet var clockLabel: UILabel!
   @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet var shimmeringView: FBShimmeringView!
   
+    @IBOutlet var doubleTapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet weak var shimmeringViewDate: FBShimmeringView!
     @IBOutlet weak var dateLable: UILabel!
     @IBAction func swipeGesture(sender: AnyObject) {
@@ -26,10 +28,17 @@ class ViewController: UIViewController {
         
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             let randomColor = self.randomColor()
-            self.shimmeringView.backgroundColor = randomColor
-            self.shimmeringViewDate.backgroundColor = randomColor
+//            self.shimmeringView.backgroundColor = randomColor
+//            self.shimmeringViewDate.backgroundColor = randomColor
+            self.backView.backgroundColor = randomColor
         })
         
+    }
+    
+    @IBAction func doubleTapGesture(sender: AnyObject) {
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.backView.backgroundColor = UIColor.blackColor()
+        })
     }
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -47,9 +56,13 @@ class ViewController: UIViewController {
     shimmeringViewDate.shimmering = true
     
     
+    shimmeringViewDate.shimmeringSpeed = 230.0 / (shimmeringView.frame.width / shimmeringViewDate.frame.width)
+    println("\(shimmeringViewDate.shimmeringSpeed)")
     dateFormatter2 = NSDateFormatter()
     dateFormatter2.dateStyle = NSDateFormatterStyle.FullStyle
     
+    
+    tapGestureRecognizer.requireGestureRecognizerToFail(doubleTapGestureRecognizer)
   }
   
     
@@ -88,6 +101,7 @@ class ViewController: UIViewController {
     var dateToDisplay = dateFormatter2.stringFromDate(NSDate())
     clockLabel.text = timeToDisplay
     dateLable.text = dateToDisplay
+    dateLable.sizeToFit()
   }
   
   @IBAction func didTapView() {
