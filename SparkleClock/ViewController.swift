@@ -12,16 +12,22 @@ import QuartzCore
 class ViewController: UIViewController {
   var timer: NSTimer!
   var dateFormatter: NSDateFormatter!
+    var dateFormatter2: NSDateFormatter!
+    
   @IBOutlet var clockLabel: UILabel!
   @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet var shimmeringView: FBShimmeringView!
   
+    @IBOutlet weak var shimmeringViewDate: FBShimmeringView!
+    @IBOutlet weak var dateLable: UILabel!
     @IBAction func swipeGesture(sender: AnyObject) {
 //        println("zhengjie")
         
         
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.shimmeringView.backgroundColor = self.randomColor()
+            let randomColor = self.randomColor()
+            self.shimmeringView.backgroundColor = randomColor
+            self.shimmeringViewDate.backgroundColor = randomColor
         })
         
     }
@@ -35,7 +41,15 @@ class ViewController: UIViewController {
     
     shimmeringView.contentView = clockLabel
     shimmeringView.shimmering = true
-//    shimmeringView.shimmeringSpeed = 300
+
+    
+    shimmeringViewDate.contentView = dateLable
+    shimmeringViewDate.shimmering = true
+    
+    
+    dateFormatter2 = NSDateFormatter()
+    dateFormatter2.dateStyle = NSDateFormatterStyle.FullStyle
+    
   }
   
     
@@ -71,18 +85,23 @@ class ViewController: UIViewController {
   
   func updateClock() {
     var timeToDisplay = dateFormatter.stringFromDate(NSDate())
+    var dateToDisplay = dateFormatter2.stringFromDate(NSDate())
     clockLabel.text = timeToDisplay
+    dateLable.text = dateToDisplay
   }
   
   @IBAction func didTapView() {
     shimmeringView.shimmering = !shimmeringView.shimmering
+    shimmeringViewDate.shimmering = !shimmeringViewDate.shimmering
     tapGestureRecognizer.enabled = false
     
     UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .CurveEaseIn, animations: {
       self.clockLabel.transform = CGAffineTransformMakeScale(1.2, 1.2)
+        self.dateLable.transform = CGAffineTransformMakeScale(1.2, 1.2)
       }, completion: { (finished) -> Void in
         UIView.animateWithDuration(0.25, delay: 0.1, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
           self.clockLabel.transform = CGAffineTransformIdentity
+            self.dateLable.transform = CGAffineTransformIdentity
           }, completion: {
             (finished) -> Void in
             self.tapGestureRecognizer.enabled = true
