@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04D195B41AB738AC00B03D6A /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 04D195A91AB737F600B03D6A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		04D195B61AB73D1600B03D6A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D195B51AB73D1600B03D6A /* SwiftyJSON.swift */; };
 		93AFDFEA1A3282ED000EDF95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AFDFE91A3282ED000EDF95 /* AppDelegate.swift */; };
 		93AFDFEC1A3282ED000EDF95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AFDFEB1A3282ED000EDF95 /* ViewController.swift */; };
 		93AFDFEF1A3282ED000EDF95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93AFDFED1A3282ED000EDF95 /* Main.storyboard */; };
@@ -18,6 +20,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		04D195A81AB737F600B03D6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04D195A11AB737F600B03D6A /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		04D195AA1AB737F600B03D6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04D195A11AB737F600B03D6A /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		04D195AC1AB737F600B03D6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04D195A11AB737F600B03D6A /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		04D195AE1AB737F600B03D6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04D195A11AB737F600B03D6A /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire OSX Tests";
+		};
+		04D195B01AB7387300B03D6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04D195A11AB737F600B03D6A /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
 		93AFDFFA1A3282EE000EDF95 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 93AFDFDC1A3282ED000EDF95 /* Project object */;
@@ -27,8 +64,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		04D195B31AB7388A00B03D6A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				04D195B41AB738AC00B03D6A /* Alamofire.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		046471741AB5B5800053C48F /* SparkleClock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SparkleClock-Bridging-Header.h"; sourceTree = "<group>"; };
+		04D195A11AB737F600B03D6A /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		04D195B51AB73D1600B03D6A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		291B72B939DC9786920E4B46 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		93AFDFE41A3282ED000EDF95 /* SparkleClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparkleClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93AFDFE81A3282ED000EDF95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +117,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04D195A21AB737F600B03D6A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04D195A91AB737F600B03D6A /* Alamofire.framework */,
+				04D195AB1AB737F600B03D6A /* Alamofire.framework */,
+				04D195AD1AB737F600B03D6A /* Alamofire iOS Tests.xctest */,
+				04D195AF1AB737F600B03D6A /* Alamofire OSX Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4EE196FC7A0A54C7A9F22848 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +140,7 @@
 		93AFDFDB1A3282ED000EDF95 = {
 			isa = PBXGroup;
 			children = (
+				04D195A11AB737F600B03D6A /* Alamofire.xcodeproj */,
 				93AFDFE61A3282ED000EDF95 /* SparkleClock */,
 				93AFDFFC1A3282EE000EDF95 /* SparkleClockTests */,
 				93AFDFE51A3282ED000EDF95 /* Products */,
@@ -97,6 +161,7 @@
 		93AFDFE61A3282ED000EDF95 /* SparkleClock */ = {
 			isa = PBXGroup;
 			children = (
+				04D195B51AB73D1600B03D6A /* SwiftyJSON.swift */,
 				046471741AB5B5800053C48F /* SparkleClock-Bridging-Header.h */,
 				93AFDFE91A3282ED000EDF95 /* AppDelegate.swift */,
 				93AFDFEB1A3282ED000EDF95 /* ViewController.swift */,
@@ -154,10 +219,12 @@
 				93AFDFE11A3282ED000EDF95 /* Frameworks */,
 				93AFDFE21A3282ED000EDF95 /* Resources */,
 				C30DFA023D557F23F4388EDE /* Copy Pods Resources */,
+				04D195B31AB7388A00B03D6A /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				04D195B11AB7387300B03D6A /* PBXTargetDependency */,
 			);
 			name = SparkleClock;
 			productName = SparkleClock;
@@ -211,6 +278,12 @@
 			mainGroup = 93AFDFDB1A3282ED000EDF95;
 			productRefGroup = 93AFDFE51A3282ED000EDF95 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 04D195A21AB737F600B03D6A /* Products */;
+					ProjectRef = 04D195A11AB737F600B03D6A /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				93AFDFE31A3282ED000EDF95 /* SparkleClock */,
@@ -218,6 +291,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		04D195A91AB737F600B03D6A /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 04D195A81AB737F600B03D6A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		04D195AB1AB737F600B03D6A /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 04D195AA1AB737F600B03D6A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		04D195AD1AB737F600B03D6A /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = 04D195AC1AB737F600B03D6A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		04D195AF1AB737F600B03D6A /* Alamofire OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire OSX Tests.xctest";
+			remoteRef = 04D195AE1AB737F600B03D6A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		93AFDFE21A3282ED000EDF95 /* Resources */ = {
@@ -277,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D195B61AB73D1600B03D6A /* SwiftyJSON.swift in Sources */,
 				93AFDFEC1A3282ED000EDF95 /* ViewController.swift in Sources */,
 				93AFDFEA1A3282ED000EDF95 /* AppDelegate.swift in Sources */,
 			);
@@ -293,6 +398,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		04D195B11AB7387300B03D6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = 04D195B01AB7387300B03D6A /* PBXContainerItemProxy */;
+		};
 		93AFDFFB1A3282EE000EDF95 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 93AFDFE31A3282ED000EDF95 /* SparkleClock */;
@@ -407,6 +517,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SparkleClock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SparkleClock/SparkleClock-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -421,6 +535,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SparkleClock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SparkleClock/SparkleClock-Bridging-Header.h";
 			};
