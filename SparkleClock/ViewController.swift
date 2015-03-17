@@ -14,6 +14,12 @@ import Alamofire
 let IS_IOS7 = (UIDevice.currentDevice().systemVersion as NSString).doubleValue >= 7.0
 let IS_IOS8 = (UIDevice.currentDevice().systemVersion as NSString).doubleValue >= 8.0
 
+
+func afterDelay(seconds:Double,closure:() ->()){
+    let when = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC)))
+    dispatch_after(when, dispatch_get_main_queue(), closure)
+}
+
 class ViewController: UIViewController ,CLLocationManagerDelegate{
     var timer: NSTimer!
     var dateFormatter: NSDateFormatter!
@@ -48,27 +54,27 @@ class ViewController: UIViewController ,CLLocationManagerDelegate{
         })
     }
 
-  @IBAction func didTapView() {
-    shimmeringView.shimmering = !shimmeringView.shimmering
-    shimmeringViewDate.shimmering = !shimmeringViewDate.shimmering
-    tapGestureRecognizer.enabled = false
+    @IBAction func didTapView() {
+        shimmeringView.shimmering = !shimmeringView.shimmering
+        shimmeringViewDate.shimmering = !shimmeringViewDate.shimmering
+        tapGestureRecognizer.enabled = false
     
-    UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .CurveEaseIn, animations: {
-        self.clockLabel.transform = CGAffineTransformMakeScale(1.2, 1.2)
-        self.dateLable.transform = CGAffineTransformMakeScale(1.2, 1.2)
-        self.tempLabel.transform = CGAffineTransformMakeScale(1.2, 1.2)
+        UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .CurveEaseIn, animations: {
+            self.clockLabel.transform = CGAffineTransformMakeScale(1.2, 1.2)
+            self.dateLable.transform = CGAffineTransformMakeScale(1.2, 1.2)
+            self.tempLabel.transform = CGAffineTransformMakeScale(1.2, 1.2)
         
-      }, completion: { (finished) -> Void in
-        UIView.animateWithDuration(0.25, delay: 0.1, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
-            self.clockLabel.transform = CGAffineTransformIdentity
-            self.dateLable.transform = CGAffineTransformIdentity
-            self.tempLabel.transform = CGAffineTransformIdentity
-          }, completion: {
-            (finished) -> Void in
-            self.tapGestureRecognizer.enabled = true
+            }, completion: { (finished) -> Void in
+                UIView.animateWithDuration(0.25, delay: 0.1, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .CurveEaseOut, animations: {
+                    self.clockLabel.transform = CGAffineTransformIdentity
+                    self.dateLable.transform = CGAffineTransformIdentity
+                    self.tempLabel.transform = CGAffineTransformIdentity
+                    }, completion: {
+                        (finished) -> Void in
+                        self.tapGestureRecognizer.enabled = true
+                })
         })
-    })
-  }
+    }
     
     
     override func viewDidLoad() {
@@ -125,24 +131,37 @@ class ViewController: UIViewController ,CLLocationManagerDelegate{
     
     override func viewWillAppear(animated: Bool) {
 
-        //判断是4S的设备，修改字体大小，使之能够正常显示；
-        if backView.frame.size.width == 480.0 {
-            clockLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 80.0)
-            
-//            println("a****")
+        //判断是4S,5S等设备，修改字体大小，使之能够正常显示；
+        
+        if IS_IOS7 {
+            if backView.frame.size.height == 480.0 {
+                clockLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 80.0)
+            }
+            if backView.frame.size.height == 568.0 {
+                clockLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 90.0)
+            }
+        }
+        if IS_IOS8 {
+            if backView.frame.size.width == 480.0 {
+                clockLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 80.0)
+            }
+            if backView.frame.size.width == 568.0 {
+                clockLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 90.0)
+            }
+            if backView.frame.size.width == 736.0 {
+                clockLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 110.0)
+            }
         }
         updateUI()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         UIApplication.sharedApplication().idleTimerDisabled = true
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        
         UIApplication.sharedApplication().idleTimerDisabled = false
     }
     
@@ -163,7 +182,6 @@ class ViewController: UIViewController ,CLLocationManagerDelegate{
     func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let url = "http://api.openweathermap.org/data/2.5/forecast"
         let params = ["lat":latitude, "lon":longitude]
-//        println(params)
         
         Alamofire.request(.GET, url, parameters: params)
             .responseJSON { (request, response, json, error) in
@@ -171,23 +189,32 @@ class ViewController: UIViewController ,CLLocationManagerDelegate{
                     println("Error: \(error)")
                     println(request)
                     println(response)
-//                    self.loading.text = "Internet appears down!"
+//                    self.tempLabel.hidden = true
                 }
                 else {
-                    println("Success: \(url)")
-                    println(request)
+//                    println("Success: \(url)")
+//                    println(request)
                     var json = JSON(json!)
 //                    self.updateUISuccess(json)
                     
+//                    println(json)
                     self.temp = json["list"][0]["main"]["temp"].double
-                    println("temp = *********")
-                    println(self.temp)
+//                    println("temp = *********")
+//                    println(self.temp)
+                    let weather = json["list"][0]["weather"][0]["main"].string
                     
+                    println(json["list"][0]["weather"][0])
                     //设置double输出的格式
                     let tem = self.temp - 273.15
                     let str = NSString(format: "%.1f", tem)
-                    self.tempLabel.text = "\(str) ℃"
-                    self.tempLabel.hidden = false 
+                    if let currentWeather = weather {
+                        self.tempLabel.text = "\(str) ℃" + "  \(currentWeather)"
+                    }else{
+                        self.tempLabel.text = "\(str) ℃"
+                    }
+//                    self.tempLabel.text = "\(str) ℃" + "  \(weather)"
+                    self.tempLabel.hidden = false
+                    self.tempLabel.alpha = 1
                 }
         }
     }
@@ -208,7 +235,12 @@ class ViewController: UIViewController ,CLLocationManagerDelegate{
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println(error)
-//        self.loading.text = "Can't get your location!"
+        self.tempLabel.text = "Can't get your location!"
+        afterDelay(5, { () -> () in
+            UIView.animateWithDuration(0.5) {
+                self.tempLabel.alpha = 0
+            }
+        })
     }
     
 }
