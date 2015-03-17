@@ -190,10 +190,14 @@ class ViewController: UIViewController ,CLLocationManagerDelegate{
                     println(request)
                     println(response)
 //                    self.tempLabel.hidden = true
+                    self.tempLabel.text = "Can't get your location!"
+                    afterDelay(5, { () -> () in
+                        UIView.animateWithDuration(0.5) {
+                            self.tempLabel.alpha = 0
+                        }
+                    })
                 }
                 else {
-//                    println("Success: \(url)")
-//                    println(request)
                     var json = JSON(json!)
 //                    self.updateUISuccess(json)
                     
