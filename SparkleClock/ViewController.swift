@@ -11,6 +11,9 @@ import QuartzCore
 import CoreLocation
 import Alamofire
 
+let IS_IOS7 = (UIDevice.currentDevice().systemVersion as NSString).doubleValue >= 7.0
+let IS_IOS8 = (UIDevice.currentDevice().systemVersion as NSString).doubleValue >= 8.0
+
 class ViewController: UIViewController ,CLLocationManagerDelegate{
     var timer: NSTimer!
     var dateFormatter: NSDateFormatter!
@@ -88,19 +91,25 @@ class ViewController: UIViewController ,CLLocationManagerDelegate{
         
         
         shimmeringViewDate.shimmeringSpeed = 230.0 / (shimmeringView.frame.width / shimmeringViewDate.frame.width)
-        println("\(shimmeringViewDate.shimmeringSpeed)")
         dateFormatter2 = NSDateFormatter()
         dateFormatter2.dateStyle = NSDateFormatterStyle.FullStyle
         
         
         tapGestureRecognizer.requireGestureRecognizerToFail(doubleTapGestureRecognizer)
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        if IS_IOS8 {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        locationManager.distanceFilter = 10
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+        
+        if IS_IOS7 {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
     }
     
     
@@ -119,6 +128,8 @@ class ViewController: UIViewController ,CLLocationManagerDelegate{
         //判断是4S的设备，修改字体大小，使之能够正常显示；
         if backView.frame.size.width == 480.0 {
             clockLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 80.0)
+            
+//            println("a****")
         }
         updateUI()
     }
@@ -146,15 +157,13 @@ class ViewController: UIViewController ,CLLocationManagerDelegate{
         dateLable.text = dateToDisplay
         dateLable.sizeToFit()
         
-        
-//        tempLabel.text = "\(tem) ℃"
     }
     
     
     func updateWeatherInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let url = "http://api.openweathermap.org/data/2.5/forecast"
         let params = ["lat":latitude, "lon":longitude]
-        println(params)
+//        println(params)
         
         Alamofire.request(.GET, url, parameters: params)
             .responseJSON { (request, response, json, error) in
@@ -174,8 +183,9 @@ class ViewController: UIViewController ,CLLocationManagerDelegate{
                     println("temp = *********")
                     println(self.temp)
                     
+                    //设置double输出的格式
                     let tem = self.temp - 273.15
-                    let str = NSString(format: "%.2f", tem)
+                    let str = NSString(format: "%.1f", tem)
                     self.tempLabel.text = "\(str) ℃"
                     self.tempLabel.hidden = false 
                 }
